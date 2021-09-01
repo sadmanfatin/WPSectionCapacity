@@ -1,0 +1,371 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:panelGroupLayout layout="scroll" id="pgl1">
+          <af:panelHeader text="Washing Planning - Section Capacity - #{bindings.OrgName.inputValue}"
+                          id="ph1"
+                          inlineStyle="border-style:solid; border-width:thin; background-color:rgb(199,206,218); border-color:rgb(198,198,198); margin-bottom:2px; padding:5px; height:25.0px;">
+            <f:facet name="menuBar"/>
+            <f:facet name="toolbar"/>
+          </af:panelHeader>
+          <af:panelTabbed id="pt1" styleClass="AFStretchWidth"
+                          dimensionsFrom="disclosedChild">
+            <af:showDetailItem text="Capacity" id="sdi1">
+              <af:panelHeader text="Section Current Capacity " id="ph2">
+                <f:facet name="menuBar"/>
+                <f:facet name="toolbar"/>
+                <af:table value="#{bindings.CurrentSectionCapacityVO1.collectionModel}"
+                          var="row"
+                          rows="#{bindings.CurrentSectionCapacityVO1.rangeSize}"
+                          emptyText="#{bindings.CurrentSectionCapacityVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.CurrentSectionCapacityVO1.rangeSize}"
+                          rowBandingInterval="1"
+                          filterModel="#{bindings.CurrentSectionCapacityVO1Query.queryDescriptor}"
+                          queryListener="#{bindings.CurrentSectionCapacityVO1Query.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          selectedRowKeys="#{bindings.CurrentSectionCapacityVO1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.CurrentSectionCapacityVO1.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t1"
+                          inlineStyle="width:1000px; height:200.0px;"
+                          binding="#{ManagedBean.currentSectionCapacityTable}">
+                  <af:column sortProperty="OrgId" filterable="true"
+                             sortable="false"
+                             headerText="#{bindings.CurrentSectionCapacityVO1.hints.OrgId.label}"
+                             id="c3" visible="false">
+                    <af:outputText value="#{row.OrgId}" id="ot9">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.CurrentSectionCapacityVO1.hints.OrgId.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="SectionName" filterable="true"
+                             sortable="false" headerText="Section Name" id="c4"
+                             width="200" align="center">
+                    <af:outputText value="#{row.SectionName}" id="ot1"/>
+                  </af:column>
+                  <af:column sortProperty="WpSectionId" filterable="true"
+                             sortable="false"
+                             headerText="#{bindings.CurrentSectionCapacityVO1.hints.WpSectionId.label}"
+                             id="c7" visible="false">
+                    <af:outputText value="#{row.WpSectionId}" id="ot7">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.CurrentSectionCapacityVO1.hints.WpSectionId.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="StartDate" filterable="true"
+                             sortable="false" headerText="Start Date" id="c5"
+                             align="center">
+                    <af:outputText value="#{row.StartDate}" id="ot6">
+                      <af:convertDateTime pattern="#{bindings.CurrentSectionCapacityVO1.hints.StartDate.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="EndDate" filterable="true"
+                             sortable="false" headerText="End Date" id="c9"
+                             align="center">
+                    <af:outputText value="#{row.EndDate}" id="ot2">
+                      <af:convertDateTime pattern="#{bindings.CurrentSectionCapacityVO1.hints.EndDate.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="Hour" filterable="true"
+                             sortable="false"
+                             headerText="#{bindings.CurrentSectionCapacityVO1.hints.Hour.label}"
+                             id="c6" align="center">
+                    <af:outputText value="#{row.Hour}" id="ot5">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.CurrentSectionCapacityVO1.hints.Hour.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="MachineOperatorCount"
+                             filterable="true" sortable="false"
+                             headerText="Machine / Operator Count" id="c1"
+                             align="center">
+                    <af:outputText value="#{row.MachineOperatorCount}" id="ot8">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.CurrentSectionCapacityVO1.hints.MachineOperatorCount.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="Efficiency" filterable="true"
+                             sortable="false" headerText="Efficiency" id="c8"
+                             align="center">
+                    <af:outputText value="#{row.Efficiency}" id="ot3">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.CurrentSectionCapacityVO1.hints.Efficiency.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="Capacity" filterable="true"
+                             sortable="false"
+                             headerText="#{bindings.CurrentSectionCapacityVO1.hints.Capacity.label}"
+                             id="c2" align="center">
+                    <af:outputText value="#{row.Capacity}" id="ot4">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.CurrentSectionCapacityVO1.hints.Capacity.format}"/>
+                    </af:outputText>
+                  </af:column>
+                </af:table>
+              </af:panelHeader>
+              <af:panelHeader text="Section Capacity Entry " id="ph3">
+                <f:facet name="context"/>
+                <f:facet name="menuBar"/>
+                <f:facet name="toolbar"/>
+                <af:panelCollection id="pc1" styleClass="AFStretchWidth"
+                                    inlineStyle="width:1000.0px;">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar">
+                    <af:toolbar id="t3">
+                      <af:commandButton actionListener="#{bindings.CreateInsert.execute}"
+                                        text="Add"
+                                        disabled="#{!bindings.CreateInsert.enabled}"
+                                        id="cb1" partialSubmit="true"/>
+                      <af:commandButton actionListener="#{ManagedBean.save}"
+                                        text="Save" id="cb3"
+                                        partialSubmit="true"/>
+                      <af:commandButton actionListener="#{bindings.Delete.execute}"
+                                        text="Delete"
+                                        disabled="#{!bindings.Delete.enabled}"
+                                        id="cb2" partialSubmit="true"/>
+                    </af:toolbar>
+                  </f:facet>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.WpSectionCapacityVO1.collectionModel}"
+                            var="row"
+                            rows="#{bindings.WpSectionCapacityVO1.rangeSize}"
+                            emptyText="#{bindings.WpSectionCapacityVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.WpSectionCapacityVO1.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.WpSectionCapacityVO1Query.queryDescriptor}"
+                            queryListener="#{bindings.WpSectionCapacityVO1Query.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectedRowKeys="#{bindings.WpSectionCapacityVO1.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.WpSectionCapacityVO1.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t2"
+                            partialTriggers=":::t1 ::cb1 ::cb2 ::cb3">
+                    <af:column sortProperty="SectionCapacityId"
+                               filterable="true" sortable="false"
+                               headerText="#{bindings.WpSectionCapacityVO1.hints.SectionCapacityId.label}"
+                               id="c11" visible="false">
+                      <af:inputText value="#{row.bindings.SectionCapacityId.inputValue}"
+                                    label="#{bindings.WpSectionCapacityVO1.hints.SectionCapacityId.label}"
+                                    required="#{bindings.WpSectionCapacityVO1.hints.SectionCapacityId.mandatory}"
+                                    columns="#{bindings.WpSectionCapacityVO1.hints.SectionCapacityId.displayWidth}"
+                                    maximumLength="#{bindings.WpSectionCapacityVO1.hints.SectionCapacityId.precision}"
+                                    shortDesc="#{bindings.WpSectionCapacityVO1.hints.SectionCapacityId.tooltip}"
+                                    id="it3">
+                        <f:validator binding="#{row.bindings.SectionCapacityId.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.WpSectionCapacityVO1.hints.SectionCapacityId.format}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="WpSectionId" filterable="true"
+                               sortable="false"
+                               headerText="#{bindings.WpSectionCapacityVO1.hints.WpSectionId.label}"
+                               id="c22" visible="false">
+                      <af:inputText value="#{row.bindings.WpSectionId.inputValue}"
+                                    label="#{bindings.WpSectionCapacityVO1.hints.WpSectionId.label}"
+                                    required="#{bindings.WpSectionCapacityVO1.hints.WpSectionId.mandatory}"
+                                    columns="#{bindings.WpSectionCapacityVO1.hints.WpSectionId.displayWidth}"
+                                    maximumLength="#{bindings.WpSectionCapacityVO1.hints.WpSectionId.precision}"
+                                    shortDesc="#{bindings.WpSectionCapacityVO1.hints.WpSectionId.tooltip}"
+                                    id="it4">
+                        <f:validator binding="#{row.bindings.WpSectionId.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.WpSectionCapacityVO1.hints.WpSectionId.format}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="StartDate" filterable="true"
+                               sortable="true" headerText="Start Date" id="c15"
+                               align="center">
+                      <f:facet name="filter">
+                        <af:inputDate value="#{vs.filterCriteria.StartDate}"
+                                      id="id10"/>
+                      </f:facet>
+                      <af:inputDate value="#{row.bindings.StartDate.inputValue}"
+                                    label="#{bindings.WpSectionCapacityVO1.hints.StartDate.label}"
+                                    required="#{bindings.WpSectionCapacityVO1.hints.StartDate.mandatory}"
+                                    shortDesc="#{bindings.WpSectionCapacityVO1.hints.StartDate.tooltip}"
+                                    id="id8">
+                        <f:validator binding="#{row.bindings.StartDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.WpSectionCapacityVO1.hints.StartDate.format}"/>
+                      </af:inputDate>
+                    </af:column>
+                    <af:column sortProperty="EndDate" filterable="true"
+                               sortable="true" headerText="End Date" id="c21"
+                               align="center">
+                      <f:facet name="filter">
+                        <af:inputDate value="#{vs.filterCriteria.EndDate}"
+                                      id="id3"/>
+                      </f:facet>
+                      <af:inputDate value="#{row.bindings.EndDate.inputValue}"
+                                    label="#{bindings.WpSectionCapacityVO1.hints.EndDate.label}"
+                                    required="#{bindings.WpSectionCapacityVO1.hints.EndDate.mandatory}"
+                                    shortDesc="#{bindings.WpSectionCapacityVO1.hints.EndDate.tooltip}"
+                                    id="id9">
+                        <f:validator binding="#{row.bindings.EndDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.WpSectionCapacityVO1.hints.EndDate.format}"/>
+                      </af:inputDate>
+                    </af:column>
+                    <af:column sortProperty="Hour" filterable="true"
+                               sortable="true"
+                               headerText="#{bindings.WpSectionCapacityVO1.hints.Hour.label}"
+                               id="c13" align="center">
+                      <af:inputText value="#{row.bindings.Hour.inputValue}"
+                                    label="#{bindings.WpSectionCapacityVO1.hints.Hour.label}"
+                                    required="#{bindings.WpSectionCapacityVO1.hints.Hour.mandatory}"
+                                    columns="#{bindings.WpSectionCapacityVO1.hints.Hour.displayWidth}"
+                                    maximumLength="#{bindings.WpSectionCapacityVO1.hints.Hour.precision}"
+                                    shortDesc="#{bindings.WpSectionCapacityVO1.hints.Hour.tooltip}"
+                                    id="it2" autoSubmit="true">
+                        <f:validator binding="#{row.bindings.Hour.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.WpSectionCapacityVO1.hints.Hour.format}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="MachineOperatorCount"
+                               filterable="true" sortable="true"
+                               headerText="Machine Operator Count" id="c14"
+                               align="center">
+                      <af:inputText value="#{row.bindings.MachineOperatorCount.inputValue}"
+                                    label="#{bindings.WpSectionCapacityVO1.hints.MachineOperatorCount.label}"
+                                    required="#{bindings.WpSectionCapacityVO1.hints.MachineOperatorCount.mandatory}"
+                                    columns="#{bindings.WpSectionCapacityVO1.hints.MachineOperatorCount.displayWidth}"
+                                    maximumLength="#{bindings.WpSectionCapacityVO1.hints.MachineOperatorCount.precision}"
+                                    shortDesc="#{bindings.WpSectionCapacityVO1.hints.MachineOperatorCount.tooltip}"
+                                    id="it10" autoSubmit="true">
+                        <f:validator binding="#{row.bindings.MachineOperatorCount.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.WpSectionCapacityVO1.hints.MachineOperatorCount.format}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="Efficiency" filterable="true"
+                               sortable="true"
+                               headerText="#{bindings.WpSectionCapacityVO1.hints.Efficiency.label}"
+                               id="c23" align="center">
+                      <af:inputText value="#{row.bindings.Efficiency.inputValue}"
+                                    label="#{bindings.WpSectionCapacityVO1.hints.Efficiency.label}"
+                                    required="#{bindings.WpSectionCapacityVO1.hints.Efficiency.mandatory}"
+                                    columns="#{bindings.WpSectionCapacityVO1.hints.Efficiency.displayWidth}"
+                                    maximumLength="#{bindings.WpSectionCapacityVO1.hints.Efficiency.precision}"
+                                    shortDesc="#{bindings.WpSectionCapacityVO1.hints.Efficiency.tooltip}"
+                                    id="it9" autoSubmit="true">
+                        <f:validator binding="#{row.bindings.Efficiency.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.WpSectionCapacityVO1.hints.Efficiency.format}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="Capacity" filterable="true"
+                               sortable="true"
+                               headerText="#{bindings.WpSectionCapacityVO1.hints.Capacity.label}"
+                               id="c12" align="center">
+                      <af:inputText value="#{row.bindings.Capacity.inputValue}"
+                                    label="#{bindings.WpSectionCapacityVO1.hints.Capacity.label}"
+                                    required="#{bindings.WpSectionCapacityVO1.hints.Capacity.mandatory}"
+                                    columns="#{bindings.WpSectionCapacityVO1.hints.Capacity.displayWidth}"
+                                    maximumLength="#{bindings.WpSectionCapacityVO1.hints.Capacity.precision}"
+                                    shortDesc="#{bindings.WpSectionCapacityVO1.hints.Capacity.tooltip}"
+                                    id="it6" partialTriggers="it2 it10 it9"
+                                    autoSubmit="true" readOnly="true">
+                        <f:validator binding="#{row.bindings.Capacity.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.WpSectionCapacityVO1.hints.Capacity.format}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column id="c17">
+                      <af:outputText id="ot10"/>
+                    </af:column>
+                    <af:column sortProperty="CreationDate" filterable="true"
+                               sortable="false"
+                               headerText="#{bindings.WpSectionCapacityVO1.hints.CreationDate.label}"
+                               id="c19" visible="false">
+                      <f:facet name="filter">
+                        <af:inputDate value="#{vs.filterCriteria.CreationDate}"
+                                      id="id5"/>
+                      </f:facet>
+                      <af:inputDate value="#{row.bindings.CreationDate.inputValue}"
+                                    label="#{bindings.WpSectionCapacityVO1.hints.CreationDate.label}"
+                                    required="#{bindings.WpSectionCapacityVO1.hints.CreationDate.mandatory}"
+                                    shortDesc="#{bindings.WpSectionCapacityVO1.hints.CreationDate.tooltip}"
+                                    id="id7">
+                        <f:validator binding="#{row.bindings.CreationDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.WpSectionCapacityVO1.hints.CreationDate.format}"/>
+                      </af:inputDate>
+                    </af:column>
+                    <af:column headerText="#{bindings.WpSectionCapacityVO1.hints.CreatedBy.label}"
+                               id="c10" sortable="false" filterable="true"
+                               visible="false">
+                      <af:inputText value="#{row.bindings.CreatedBy.inputValue}"
+                                    label="#{bindings.WpSectionCapacityVO1.hints.CreatedBy.label}"
+                                    required="#{bindings.WpSectionCapacityVO1.hints.CreatedBy.mandatory}"
+                                    columns="#{bindings.WpSectionCapacityVO1.hints.CreatedBy.displayWidth}"
+                                    maximumLength="#{bindings.WpSectionCapacityVO1.hints.CreatedBy.precision}"
+                                    shortDesc="#{bindings.WpSectionCapacityVO1.hints.CreatedBy.tooltip}"
+                                    id="it1">
+                        <f:validator binding="#{row.bindings.CreatedBy.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.WpSectionCapacityVO1.hints.CreatedBy.format}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="LastUpdatedBy" filterable="true"
+                               sortable="false"
+                               headerText="#{bindings.WpSectionCapacityVO1.hints.LastUpdatedBy.label}"
+                               id="c16" visible="false">
+                      <af:inputText value="#{row.bindings.LastUpdatedBy.inputValue}"
+                                    label="#{bindings.WpSectionCapacityVO1.hints.LastUpdatedBy.label}"
+                                    required="#{bindings.WpSectionCapacityVO1.hints.LastUpdatedBy.mandatory}"
+                                    columns="#{bindings.WpSectionCapacityVO1.hints.LastUpdatedBy.displayWidth}"
+                                    maximumLength="#{bindings.WpSectionCapacityVO1.hints.LastUpdatedBy.precision}"
+                                    shortDesc="#{bindings.WpSectionCapacityVO1.hints.LastUpdatedBy.tooltip}"
+                                    id="it8">
+                        <f:validator binding="#{row.bindings.LastUpdatedBy.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.WpSectionCapacityVO1.hints.LastUpdatedBy.format}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="LastUpdatedDate" filterable="true"
+                               sortable="false"
+                               headerText="#{bindings.WpSectionCapacityVO1.hints.LastUpdatedDate.label}"
+                               id="c18" visible="false">
+                      <f:facet name="filter">
+                        <af:inputDate value="#{vs.filterCriteria.LastUpdatedDate}"
+                                      id="id4"/>
+                      </f:facet>
+                      <af:inputDate value="#{row.bindings.LastUpdatedDate.inputValue}"
+                                    label="#{bindings.WpSectionCapacityVO1.hints.LastUpdatedDate.label}"
+                                    required="#{bindings.WpSectionCapacityVO1.hints.LastUpdatedDate.mandatory}"
+                                    shortDesc="#{bindings.WpSectionCapacityVO1.hints.LastUpdatedDate.tooltip}"
+                                    id="id6">
+                        <f:validator binding="#{row.bindings.LastUpdatedDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.WpSectionCapacityVO1.hints.LastUpdatedDate.format}"/>
+                      </af:inputDate>
+                    </af:column>
+                    <af:column sortProperty="OrgId" filterable="true"
+                               sortable="false"
+                               headerText="#{bindings.WpSectionCapacityVO1.hints.OrgId.label}"
+                               id="c20" visible="false">
+                      <af:inputText value="#{row.bindings.OrgId.inputValue}"
+                                    label="#{bindings.WpSectionCapacityVO1.hints.OrgId.label}"
+                                    required="#{bindings.WpSectionCapacityVO1.hints.OrgId.mandatory}"
+                                    columns="#{bindings.WpSectionCapacityVO1.hints.OrgId.displayWidth}"
+                                    maximumLength="#{bindings.WpSectionCapacityVO1.hints.OrgId.precision}"
+                                    shortDesc="#{bindings.WpSectionCapacityVO1.hints.OrgId.tooltip}"
+                                    id="it5">
+                        <f:validator binding="#{row.bindings.OrgId.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.WpSectionCapacityVO1.hints.OrgId.format}"/>
+                      </af:inputText>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </af:panelHeader>
+            </af:showDetailItem>
+            <af:showDetailItem text="Monthly Capacity View" id="sdi2"/>
+          </af:panelTabbed>
+        </af:panelGroupLayout>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

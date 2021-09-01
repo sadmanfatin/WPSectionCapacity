@@ -1,0 +1,22 @@
+select * from (
+
+ select  d.wp_section_id, 
+ d.unit_section_id, 
+ d.section_name,
+ d.org_id,
+ apps.org_id_to_org_name(d.org_id) org_name,
+ d.day_no,
+ trim(  to_char   ( day_val, 'Month')) month_name,
+ extract(year from day_val) year,
+ d.capacity
+ 
+from APPS.WP_DAY_WISE_SECTION_CAPACITY_V d
+
+)
+
+PIVOT( min(capacity) 
+
+for day_no in (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31) 
+
+
+)

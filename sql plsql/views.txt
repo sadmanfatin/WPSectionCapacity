@@ -1,0 +1,48 @@
+CREATE OR REPLACE VIEW APPS.WP_DAY_WISE_SECTION_CAPACITY_V AS
+
+
+SELECT  SI.WP_SECTION_ID, SI.UNIT_SECTION_ID,  SI.SECTION_NAME, SC.ORG_ID,   DAYS.DAY_VAL,      SC.MACHINE_OPERATOR_COUNT MO_COUNT, SC.HOUR,  SC.EFFICIENCY, SC.CAPACITY 
+FROM WP_SECTION_CAPACITY SC, 
+WP_SECTION_INFO  SI,
+(
+SELECT   TO_DATE('01/01/2010' , 'dd/mm/yyyy')  +LEVEL-1 DAY_VAL
+FROM DUAL CONNECT BY  TO_DATE('01/01/2020' , 'mm/dd/yyyy')  +LEVEL-1 <= TO_DATE('31/12/2040' , 'dd/mm/yyyy')
+
+) DAYS 
+
+WHERE  1=1
+AND SC.WP_SECTION_ID = SI.WP_SECTION_ID
+
+AND DAYS.DAY_VAL BETWEEN SC.START_DATE AND NVL( SC.END_DATE , LAST_DAY(SYSDATE))  ;
+
+
+
+=================================================================================================================================================================
+
+
+create or replace view apps.wp_mont_wise_section_capacity
+ as 
+ 
+ 
+select * from (
+
+ select  d.wp_section_id, 
+ d.unit_section_id, 
+ d.section_name,
+ d.org_id,
+ d.day_no,
+ trim(  to_char   ( day_val, 'Month')) month_name,
+ extract(year from day_val) year,
+ d.capacity
+ 
+from APPS.WP_DAY_WISE_SECTION_CAPACITY_V d
+
+)
+
+PIVOT( min(capacity) 
+
+for day_no in (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31) 
+
+)
+
+;

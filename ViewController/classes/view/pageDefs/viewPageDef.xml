@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.62.29" id="viewPageDef" Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <invokeAction Binds="setSessionValues" id="setSessionValue"
+                  Refresh="always"/>
+    <iterator Binds="CurrentSectionCapacityVO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="CurrentSectionCapacityVO1Iterator"/>
+    <searchRegion Binds="CurrentSectionCapacityVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="CurrentSectionCapacityVO1Query"/>
+    <iterator Binds="WpSectionCapacityVO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="WpSectionCapacityVO1Iterator"/>
+    <searchRegion Binds="WpSectionCapacityVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="WpSectionCapacityVO1Query"/>
+    <iterator Binds="OrgVO1" RangeSize="10" DataControl="AppModuleDataControl"
+              id="OrgVO1Iterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="setSessionValues"
+                  InstanceName="AppModuleDataControl.dataProvider"
+                  DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="setSessionValues"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="orgId" NDValue="#{viewScope.OrgId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="userId" NDValue="#{viewScope.UserId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="respId" NDValue="#{viewScope.RespId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="respApplId" NDValue="#{viewScope.RespApplId}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="WpSectionCapacityVO1Iterator" id="WpSectionCapacityVO1">
+      <nodeDefinition DefName="model.view.WpSectionCapacityVO"
+                      Name="WpSectionCapacityVO10">
+        <AttrNames>
+          <Item Value="SectionCapacityId"/>
+          <Item Value="WpSectionId"/>
+          <Item Value="StartDate"/>
+          <Item Value="EndDate"/>
+          <Item Value="MachineOperatorCount"/>
+          <Item Value="Hour"/>
+          <Item Value="Efficiency"/>
+          <Item Value="Capacity"/>
+          <Item Value="CreationDate"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdatedDate"/>
+          <Item Value="OrgId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CurrentSectionCapacityVO1Iterator"
+          id="CurrentSectionCapacityVO1">
+      <nodeDefinition DefName="model.view.CurrentSectionCapacityVO"
+                      Name="CurrentSectionCapacityVO10">
+        <AttrNames>
+          <Item Value="OrgId"/>
+          <Item Value="SectionName"/>
+          <Item Value="WpSectionId"/>
+          <Item Value="StartDate"/>
+          <Item Value="EndDate"/>
+          <Item Value="Hour"/>
+          <Item Value="MachineOperatorCount"/>
+          <Item Value="Efficiency"/>
+          <Item Value="Capacity"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="WpSectionCapacityVO1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="WpSectionCapacityVO1Iterator" id="Delete"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="OrgVO1Iterator" id="OrgName">
+      <AttrNames>
+        <Item Value="OrgName"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+  </bindings>
+</pageDefinition>
