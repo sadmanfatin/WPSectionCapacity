@@ -2,6 +2,9 @@ import javax.faces.event.ActionEvent;
 
 import model.service.AppModuleImpl;
 
+import model.view.CurrentSectionCapacityVORowImpl;
+import model.view.WpSectionCapacityVORowImpl;
+
 import oracle.adf.model.BindingContext;
 
 import oracle.adf.model.binding.DCBindingContainer;
@@ -109,5 +112,53 @@ public class ManagedBean {
        
                
      }
+
+    public void addCapacity(ActionEvent actionEvent) {
+        // Add event code here...
+        Key currnetRowKey = null;
+        oracle.jbo.domain.Number currenntSectionCapacityId = null;
+        ViewObject wpSectionCapacityVo = appM.getWpSectionCapacityVO1();
+        ViewObject currentSectionCapacityVo = appM.getCurrentSectionCapacityVO1();
+      
+        CurrentSectionCapacityVORowImpl currentCurrnetSectionCapacityRow = (CurrentSectionCapacityVORowImpl)currentSectionCapacityVo.getCurrentRow();
+        
+     currenntSectionCapacityId  = currentCurrnetSectionCapacityRow.getSectionCapacityId();
+        
+        oracle.jbo.domain.Number hour = null , efficiency = null , moCount = null, lastCurrentRowSectionCapacityId = null;
+       
+       
+//             currnetRowKey  = new Key (new Object[]{ currenntSectionCapacityId} );
+//            
+//             for (Object o :  currnetRowKey.getKeyValues() ) {
+//                 System.out.println("ooo  "+ o);
+//             }
+                 
+       
+       WpSectionCapacityVORowImpl currentWpSectionCapacityRow = (WpSectionCapacityVORowImpl)wpSectionCapacityVo.getRow(currnetRowKey);
+       
+       
+       if(currentWpSectionCapacityRow != null ){
+           
+           currentWpSectionCapacityRow.setCurrentCapacity(null);
+           
+           hour = currentWpSectionCapacityRow.getHour();
+           moCount = currentWpSectionCapacityRow.getMachineOperatorCount();
+           efficiency = currentWpSectionCapacityRow.getEfficiency();
+               lastCurrentRowSectionCapacityId = currentWpSectionCapacityRow.getSectionCapacityId();
+           }
+       
+       
+        currentWpSectionCapacityRow = (WpSectionCapacityVORowImpl)wpSectionCapacityVo.createRow();
+        currentWpSectionCapacityRow.setHour(hour);
+        currentWpSectionCapacityRow.setMachineOperatorCount(moCount);
+        currentWpSectionCapacityRow.setEfficiency(efficiency);
+        currentWpSectionCapacityRow.setRowInsertedStatus("n");
+        currentWpSectionCapacityRow.setLastCurrentRowSectionId(lastCurrentRowSectionCapacityId);
+        wpSectionCapacityVo.insertRow(currentWpSectionCapacityRow);
     
+       
+//       System.out.println ( "currnetRowKey  :  "+currnetRowKey.getKeyValues().toString() + "  ");        
+    //  System.out.println ( "current  id  :  "+currentWpSectionCapacityRow.getSectionCapacityId());
+        
+    }
 }

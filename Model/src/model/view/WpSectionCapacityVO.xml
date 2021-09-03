@@ -30,7 +30,10 @@
        WpSectionCapacityEO.CREATED_BY, 
        WpSectionCapacityEO.LAST_UPDATED_BY, 
        WpSectionCapacityEO.LAST_UPDATED_DATE, 
-       WpSectionCapacityEO.ORG_ID
+       WpSectionCapacityEO.ORG_ID,
+WpSectionCapacityEO.CURRENT_CAPACITY,
+'y' ROW_INSERTED_STATUS,
+WpSectionCapacityEO.LAST_CURRENT_ROW_SECTION_ID
 FROM WP_SECTION_CAPACITY WpSectionCapacityEO
 order by WpSectionCapacityEO.SECTION_CAPACITY_ID desc]]>
   </SQLQuery>
@@ -117,6 +120,32 @@ order by WpSectionCapacityEO.SECTION_CAPACITY_ID desc]]>
     EntityAttrName="OrgId"
     EntityUsage="WpSectionCapacityEO"
     AliasName="ORG_ID"/>
+  <ViewAttribute
+    Name="CurrentCapacity"
+    PrecisionRule="true"
+    EntityAttrName="CurrentCapacity"
+    EntityUsage="WpSectionCapacityEO"
+    AliasName="CURRENT_CAPACITY"/>
+  <ViewAttribute
+    Name="RowInsertedStatus"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="ROW_INSERTED_STATUS"
+    SQLType="VARCHAR"
+    Expression="ROW_INSERTED_STATUS"
+    Precision="1">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LastCurrentRowSectionId"
+    PrecisionRule="true"
+    EntityAttrName="LastCurrentRowSectionId"
+    EntityUsage="WpSectionCapacityEO"
+    AliasName="LAST_CURRENT_ROW_SECTION_ID"/>
   <ViewLinkAccessor
     Name="CurrentSectionCapacityVO"
     ViewLink="model.view.CurrentSectionCapapcity_vs_WpSectionCapacity_VL"

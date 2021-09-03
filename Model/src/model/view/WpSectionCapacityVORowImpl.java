@@ -2,8 +2,11 @@ package model.view;
 
 import java.sql.SQLException;
 
+import java.util.Calendar;
+
 import model.entity.WpSectionCapacityEOImpl;
 
+import oracle.jbo.Key;
 import oracle.jbo.Row;
 import oracle.jbo.domain.ClobDomain;
 import oracle.jbo.domain.Date;
@@ -171,6 +174,36 @@ public class WpSectionCapacityVORowImpl extends ViewRowImpl {
             }
         }
         ,
+        CurrentCapacity {
+            public Object get(WpSectionCapacityVORowImpl obj) {
+                return obj.getCurrentCapacity();
+            }
+
+            public void put(WpSectionCapacityVORowImpl obj, Object value) {
+                obj.setCurrentCapacity((String)value);
+            }
+        }
+        ,
+        RowInsertedStatus {
+            public Object get(WpSectionCapacityVORowImpl obj) {
+                return obj.getRowInsertedStatus();
+            }
+
+            public void put(WpSectionCapacityVORowImpl obj, Object value) {
+                obj.setRowInsertedStatus((String)value);
+            }
+        }
+        ,
+        LastCurrentRowSectionId {
+            public Object get(WpSectionCapacityVORowImpl obj) {
+                return obj.getLastCurrentRowSectionId();
+            }
+
+            public void put(WpSectionCapacityVORowImpl obj, Object value) {
+                obj.setLastCurrentRowSectionId((Number)value);
+            }
+        }
+        ,
         CurrentSectionCapacityVO {
             public Object get(WpSectionCapacityVORowImpl obj) {
                 return obj.getCurrentSectionCapacityVO();
@@ -209,6 +242,7 @@ public class WpSectionCapacityVORowImpl extends ViewRowImpl {
         }
     }
 
+
     public static final int SECTIONCAPACITYID = AttributesEnum.SectionCapacityId.index();
     public static final int WPSECTIONID = AttributesEnum.WpSectionId.index();
     public static final int STARTDATE = AttributesEnum.StartDate.index();
@@ -222,12 +256,16 @@ public class WpSectionCapacityVORowImpl extends ViewRowImpl {
     public static final int LASTUPDATEDBY = AttributesEnum.LastUpdatedBy.index();
     public static final int LASTUPDATEDDATE = AttributesEnum.LastUpdatedDate.index();
     public static final int ORGID = AttributesEnum.OrgId.index();
+    public static final int CURRENTCAPACITY = AttributesEnum.CurrentCapacity.index();
+    public static final int ROWINSERTEDSTATUS = AttributesEnum.RowInsertedStatus.index();
+    public static final int LASTCURRENTROWSECTIONID = AttributesEnum.LastCurrentRowSectionId.index();
     public static final int CURRENTSECTIONCAPACITYVO = AttributesEnum.CurrentSectionCapacityVO.index();
 
     /**
      * This is the default constructor (do not remove).
      */
     public WpSectionCapacityVORowImpl() {
+       
     }
 
     /**
@@ -283,7 +321,23 @@ public class WpSectionCapacityVORowImpl extends ViewRowImpl {
      * @param value value to set the START_DATE
      */
     public void setStartDate(Date value) {
+        
         setAttributeInternal(STARTDATE, value);
+        
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(value.getValue());
+        cal.add(Calendar.DATE, -1);      
+        java.util.Date beforeDate = cal.getTime();
+
+
+        
+        Row row = this.getViewObject().getRow(  new  Key ( new Object[]{this.getLastCurrentRowSectionId()}) );      // the row from which the current row is created
+        
+        if(row != null){
+            row.setAttribute("EndDate", beforeDate);  
+        }
+                
+        
     }
 
     /**
@@ -455,6 +509,58 @@ public class WpSectionCapacityVORowImpl extends ViewRowImpl {
      */
     public void setOrgId(Number value) {
         setAttributeInternal(ORGID, value);
+    }
+
+
+    /**
+     * Gets the attribute value for CURRENT_CAPACITY using the alias name CurrentCapacity.
+     * @return the CURRENT_CAPACITY
+     */
+    public String getCurrentCapacity() {
+        return (String) getAttributeInternal(CURRENTCAPACITY);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for CURRENT_CAPACITY using the alias name CurrentCapacity.
+     * @param value value to set the CURRENT_CAPACITY
+     */
+    public void setCurrentCapacity(String value) {
+        setAttributeInternal(CURRENTCAPACITY, value);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute RowInsertedStatus.
+     * @return the RowInsertedStatus
+     */
+    public String getRowInsertedStatus() {
+        
+ 
+        return (String) getAttributeInternal(ROWINSERTEDSTATUS);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for the calculated attribute RowInsertedStatus.
+     * @param value value to set the  RowInsertedStatus
+     */
+    public void setRowInsertedStatus(String value) {
+        setAttributeInternal(ROWINSERTEDSTATUS, value);
+    }
+
+
+    /**
+     * Gets the attribute value for LAST_CURRENT_ROW_SECTION_ID using the alias name LastCurrentRowSectionId.
+     * @return the LAST_CURRENT_ROW_SECTION_ID
+     */
+    public Number getLastCurrentRowSectionId() {
+        return (Number) getAttributeInternal(LASTCURRENTROWSECTIONID);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for LAST_CURRENT_ROW_SECTION_ID using the alias name LastCurrentRowSectionId.
+     * @param value value to set the LAST_CURRENT_ROW_SECTION_ID
+     */
+    public void setLastCurrentRowSectionId(Number value) {
+        setAttributeInternal(LASTCURRENTROWSECTIONID, value);
     }
 
     /**

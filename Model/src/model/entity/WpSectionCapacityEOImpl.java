@@ -157,6 +157,26 @@ public class WpSectionCapacityEOImpl extends EntityImpl {
                 obj.setLastUpdatedDate((Date)value);
             }
         }
+        ,
+        CurrentCapacity {
+            public Object get(WpSectionCapacityEOImpl obj) {
+                return obj.getCurrentCapacity();
+            }
+
+            public void put(WpSectionCapacityEOImpl obj, Object value) {
+                obj.setCurrentCapacity((String)value);
+            }
+        }
+        ,
+        LastCurrentRowSectionId {
+            public Object get(WpSectionCapacityEOImpl obj) {
+                return obj.getLastCurrentRowSectionId();
+            }
+
+            public void put(WpSectionCapacityEOImpl obj, Object value) {
+                obj.setLastCurrentRowSectionId((Number)value);
+            }
+        }
         ;
         private static AttributesEnum[] vals = null;
         private static int firstIndex = 0;
@@ -185,6 +205,7 @@ public class WpSectionCapacityEOImpl extends EntityImpl {
         }
     }
 
+
     public static final int SECTIONCAPACITYID = AttributesEnum.SectionCapacityId.index();
     public static final int WPSECTIONID = AttributesEnum.WpSectionId.index();
     public static final int ORGID = AttributesEnum.OrgId.index();
@@ -198,12 +219,15 @@ public class WpSectionCapacityEOImpl extends EntityImpl {
     public static final int CREATEDBY = AttributesEnum.CreatedBy.index();
     public static final int LASTUPDATEDBY = AttributesEnum.LastUpdatedBy.index();
     public static final int LASTUPDATEDDATE = AttributesEnum.LastUpdatedDate.index();
+    public static final int CURRENTCAPACITY = AttributesEnum.CurrentCapacity.index();
+    public static final int LASTCURRENTROWSECTIONID = AttributesEnum.LastCurrentRowSectionId.index();
 
     /**
      * This is the default constructor (do not remove).
      */
     public WpSectionCapacityEOImpl() {
     }
+
 
     /**
      * @return the definition object for this instance class.
@@ -427,6 +451,39 @@ public class WpSectionCapacityEOImpl extends EntityImpl {
         setAttributeInternal(LASTUPDATEDDATE, value);
     }
 
+
+    /**
+     * Gets the attribute value for CurrentCapacity, using the alias name CurrentCapacity.
+     * @return the CurrentCapacity
+     */
+    public String getCurrentCapacity() {
+        return (String)getAttributeInternal(CURRENTCAPACITY);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for CurrentCapacity.
+     * @param value value to set the CurrentCapacity
+     */
+    public void setCurrentCapacity(String value) {
+        setAttributeInternal(CURRENTCAPACITY, value);
+    }
+
+    /**
+     * Gets the attribute value for LastCurrentRowSectionId, using the alias name LastCurrentRowSectionId.
+     * @return the LastCurrentRowSectionId
+     */
+    public Number getLastCurrentRowSectionId() {
+        return (Number)getAttributeInternal(LASTCURRENTROWSECTIONID);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for LastCurrentRowSectionId.
+     * @param value value to set the LastCurrentRowSectionId
+     */
+    public void setLastCurrentRowSectionId(Number value) {
+        setAttributeInternal(LASTCURRENTROWSECTIONID, value);
+    }
+
     /**
      * getAttrInvokeAccessor: generated method. Do not modify.
      * @param index the index identifying the attribute
@@ -493,7 +550,14 @@ public class WpSectionCapacityEOImpl extends EntityImpl {
              new oracle.jbo.server.SequenceImpl("WP_SECTION_CAPACITY_SEQ",  getDBTransaction());
             oracle.jbo.domain.Number sVal = s.getSequenceNumber();
              this.setSectionCapacityId(sVal);
-               
+             
+             
+           /*
+              when a new row is created, it will be current Capacity row, but when it  will be inserted 
+              other currnet capacity row set by other user in the mean time will be set 'n' in the trigger
+            */
+             
+               this.setCurrentCapacity("y");  
           
 
      }

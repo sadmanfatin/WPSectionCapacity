@@ -9,9 +9,13 @@
   BindingStyle="OracleName"
   CustomQuery="true"
   PageIterMode="Full"
-  UseGlueCode="false">
+  UseGlueCode="false"
+  RowClass="model.view.CurrentSectionCapacityVORowImpl"
+  ComponentClass="model.view.CurrentSectionCapacityVOImpl">
   <DesignTime>
     <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll"/>
+    <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
   <Properties>
     <SchemaBasedProperties>
@@ -20,11 +24,25 @@
     </SchemaBasedProperties>
   </Properties>
   <SQLQuery>
-    <![CDATA[SELECT SI.ORG_ID , SI.SECTION_NAME, SI.WP_SECTION_ID, SC.START_DATE, SC.END_DATE, SC.HOUR, SC.MACHINE_OPERATOR_COUNT, SC.EFFICIENCY, SC.CAPACITY 
+    <![CDATA[SELECT SC.SECTION_CAPACITY_ID, SI.ORG_ID , SI.SECTION_NAME, SI.WP_SECTION_ID, SC.START_DATE, SC.END_DATE, SC.HOUR, SC.MACHINE_OPERATOR_COUNT, SC.EFFICIENCY, SC.CAPACITY 
  FROM WP_SECTION_INFO SI, WP_SECTION_CAPACITY SC
 WHERE SI.WP_SECTION_ID = SC.WP_SECTION_ID(+)
 AND    NVL ( SC.SECTION_CAPACITY_ID , 0) =  (SELECT   NVL ( MAX( SC2.SECTION_CAPACITY_ID   ) ,0)  FROM WP_SECTION_CAPACITY SC2 WHERE SC2.WP_SECTION_ID = SC.WP_SECTION_ID )]]>
   </SQLQuery>
+  <ViewAttribute
+    Name="SectionCapacityId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="SECTION_CAPACITY_ID"
+    Expression="SECTION_CAPACITY_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
   <ViewAttribute
     Name="OrgId"
     IsUpdateable="false"
@@ -79,7 +97,7 @@ AND    NVL ( SC.SECTION_CAPACITY_ID , 0) =  (SELECT   NVL ( MAX( SC2.SECTION_CAP
     ColumnType="DATE"
     AliasName="START_DATE"
     Expression="START_DATE"
-    SQLType="TIMESTAMP">
+    SQLType="DATE">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="7"/>
     </DesignTime>
@@ -93,7 +111,7 @@ AND    NVL ( SC.SECTION_CAPACITY_ID , 0) =  (SELECT   NVL ( MAX( SC2.SECTION_CAP
     ColumnType="DATE"
     AliasName="END_DATE"
     Expression="END_DATE"
-    SQLType="TIMESTAMP">
+    SQLType="DATE">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="7"/>
     </DesignTime>

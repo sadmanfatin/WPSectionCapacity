@@ -33,7 +33,7 @@
                           selectedRowKeys="#{bindings.CurrentSectionCapacityVO1.collectionModel.selectedRow}"
                           selectionListener="#{bindings.CurrentSectionCapacityVO1.collectionModel.makeCurrent}"
                           rowSelection="single" id="t1"
-                          inlineStyle="width:1000px; height:200.0px;"
+                          inlineStyle="width:1000px; height:240.0px;"
                           binding="#{ManagedBean.currentSectionCapacityTable}">
                   <af:column sortProperty="OrgId" filterable="true"
                              sortable="false"
@@ -114,21 +114,21 @@
                 <f:facet name="menuBar"/>
                 <f:facet name="toolbar"/>
                 <af:panelCollection id="pc1" styleClass="AFStretchWidth"
-                                    inlineStyle="width:1000.0px;">
+                                    inlineStyle="width:1166px;">
                   <f:facet name="menus"/>
                   <f:facet name="toolbar">
                     <af:toolbar id="t3">
-                      <af:commandButton actionListener="#{bindings.CreateInsert.execute}"
+                      <af:commandButton actionListener="#{ManagedBean.addCapacity}"
                                         text="Add"
                                         disabled="#{!bindings.CreateInsert.enabled}"
                                         id="cb1" partialSubmit="true"/>
-                      <af:commandButton actionListener="#{ManagedBean.save}"
-                                        text="Save" id="cb3"
-                                        partialSubmit="true"/>
                       <af:commandButton actionListener="#{bindings.Delete.execute}"
                                         text="Delete"
                                         disabled="#{!bindings.Delete.enabled}"
                                         id="cb2" partialSubmit="true"/>
+                      <af:commandButton actionListener="#{ManagedBean.save}"
+                                        text="Save" id="cb3"
+                                        partialSubmit="true"/>
                     </af:toolbar>
                   </f:facet>
                   <f:facet name="statusbar"/>
@@ -144,7 +144,8 @@
                             selectedRowKeys="#{bindings.WpSectionCapacityVO1.collectionModel.selectedRow}"
                             selectionListener="#{bindings.WpSectionCapacityVO1.collectionModel.makeCurrent}"
                             rowSelection="single" id="t2"
-                            partialTriggers=":::t1 ::cb1 ::cb2 ::cb3">
+                            partialTriggers=":::t1 ::cb1 ::cb2 ::cb3 id8"
+                            width="1066">
                     <af:column sortProperty="SectionCapacityId"
                                filterable="true" sortable="false"
                                headerText="#{bindings.WpSectionCapacityVO1.hints.SectionCapacityId.label}"
@@ -188,14 +189,14 @@
                                     label="#{bindings.WpSectionCapacityVO1.hints.StartDate.label}"
                                     required="#{bindings.WpSectionCapacityVO1.hints.StartDate.mandatory}"
                                     shortDesc="#{bindings.WpSectionCapacityVO1.hints.StartDate.tooltip}"
-                                    id="id8">
+                                    id="id8" autoSubmit="true">
                         <f:validator binding="#{row.bindings.StartDate.validator}"/>
                         <af:convertDateTime pattern="#{bindings.WpSectionCapacityVO1.hints.StartDate.format}"/>
                       </af:inputDate>
                     </af:column>
                     <af:column sortProperty="EndDate" filterable="true"
                                sortable="true" headerText="End Date" id="c21"
-                               align="center">
+                               align="center" partialTriggers="id8">
                       <f:facet name="filter">
                         <af:inputDate value="#{vs.filterCriteria.EndDate}"
                                       id="id3"/>
@@ -204,7 +205,7 @@
                                     label="#{bindings.WpSectionCapacityVO1.hints.EndDate.label}"
                                     required="#{bindings.WpSectionCapacityVO1.hints.EndDate.mandatory}"
                                     shortDesc="#{bindings.WpSectionCapacityVO1.hints.EndDate.tooltip}"
-                                    id="id9">
+                                    id="id9" partialTriggers="id8">
                         <f:validator binding="#{row.bindings.EndDate.validator}"/>
                         <af:convertDateTime pattern="#{bindings.WpSectionCapacityVO1.hints.EndDate.format}"/>
                       </af:inputDate>
@@ -274,8 +275,43 @@
                                           pattern="#{bindings.WpSectionCapacityVO1.hints.Capacity.format}"/>
                       </af:inputText>
                     </af:column>
-                    <af:column id="c17">
-                      <af:outputText id="ot10"/>
+                    <af:column headerText="#{bindings.WpSectionCapacityVO1.hints.CurrentCapacity.label}"
+                               id="c17" width="60" visible="false">
+                      <af:inputText value="#{row.bindings.CurrentCapacity.inputValue}"
+                                    label="#{bindings.WpSectionCapacityVO1.hints.CurrentCapacity.label}"
+                                    required="#{bindings.WpSectionCapacityVO1.hints.CurrentCapacity.mandatory}"
+                                    columns="#{bindings.WpSectionCapacityVO1.hints.CurrentCapacity.displayWidth}"
+                                    maximumLength="#{bindings.WpSectionCapacityVO1.hints.CurrentCapacity.precision}"
+                                    shortDesc="#{bindings.WpSectionCapacityVO1.hints.CurrentCapacity.tooltip}"
+                                    id="it7">
+                        <f:validator binding="#{row.bindings.CurrentCapacity.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.WpSectionCapacityVO1.hints.RowInsertedStatus.label}"
+                               id="c24" width="50" visible="false">
+                      <af:inputText value="#{row.bindings.RowInsertedStatus.inputValue}"
+                                    label="#{bindings.WpSectionCapacityVO1.hints.RowInsertedStatus.label}"
+                                    required="#{bindings.WpSectionCapacityVO1.hints.RowInsertedStatus.mandatory}"
+                                    columns="#{bindings.WpSectionCapacityVO1.hints.RowInsertedStatus.displayWidth}"
+                                    maximumLength="#{bindings.WpSectionCapacityVO1.hints.RowInsertedStatus.precision}"
+                                    shortDesc="#{bindings.WpSectionCapacityVO1.hints.RowInsertedStatus.tooltip}"
+                                    id="it11">
+                        <f:validator binding="#{row.bindings.RowInsertedStatus.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.WpSectionCapacityVO1.hints.LastCurrentRowSectionId.label}"
+                               id="c25" visible="false">
+                      <af:inputText value="#{row.bindings.LastCurrentRowSectionId.inputValue}"
+                                    label="#{bindings.WpSectionCapacityVO1.hints.LastCurrentRowSectionId.label}"
+                                    required="#{bindings.WpSectionCapacityVO1.hints.LastCurrentRowSectionId.mandatory}"
+                                    columns="#{bindings.WpSectionCapacityVO1.hints.LastCurrentRowSectionId.displayWidth}"
+                                    maximumLength="#{bindings.WpSectionCapacityVO1.hints.LastCurrentRowSectionId.precision}"
+                                    shortDesc="#{bindings.WpSectionCapacityVO1.hints.LastCurrentRowSectionId.tooltip}"
+                                    id="it12">
+                        <f:validator binding="#{row.bindings.LastCurrentRowSectionId.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.WpSectionCapacityVO1.hints.LastCurrentRowSectionId.format}"/>
+                      </af:inputText>
                     </af:column>
                     <af:column sortProperty="CreationDate" filterable="true"
                                sortable="false"

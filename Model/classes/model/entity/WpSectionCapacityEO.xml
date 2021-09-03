@@ -11,7 +11,8 @@
   AliasName="WpSectionCapacityEO"
   BindingStyle="OracleName"
   UseGlueCode="false"
-  RowClass="model.entity.WpSectionCapacityEOImpl">
+  RowClass="model.entity.WpSectionCapacityEOImpl"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Init|Access|DML"/>
     <AttrArray Name="_publishEvents"/>
@@ -159,6 +160,41 @@
       <Attr Name="_DisplaySize" Value="7"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="CurrentCapacity"
+    Precision="10"
+    ColumnName="CURRENT_CAPACITY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="WP_SECTION_CAPACITY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastCurrentRowSectionId"
+    ColumnName="LAST_CURRENT_ROW_SECTION_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="WP_SECTION_CAPACITY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="WpSectionCapacityC01">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="WP_SECTION_CAPACITY_C01"/>
+      <Attr Name="_checkCondition" Value="START_DATE &lt;= END_DATE"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.entity.WpSectionCapacityEO.StartDate"/>
+      <Item Value="model.entity.WpSectionCapacityEO.EndDate"/>
+    </AttrArray>
+  </Key>
   <Key
     Name="WpSectionCapacityPk"
     PrimaryKey="true">
@@ -169,4 +205,24 @@
       <Item Value="model.entity.WpSectionCapacityEO.SectionCapacityId"/>
     </AttrArray>
   </Key>
+  <validation:CompareValidationBean
+    Name="WpSectionCapacityEO_Rule_0"
+    ResId="model.entity.WpSectionCapacityEO_Rule_0"
+    OnAttribute="StartDate"
+    OperandType="ATTR"
+    Inverse="false"
+    CompareType="LESSTHANEQUALTO"
+    CompareValue="EndDate">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="StartDate"/>
+      <validation:Item
+        Value="EndDate"/>
+    </validation:OnAttributes>
+    <validation:OnCondition><![CDATA[EndDate != null]]></validation:OnCondition>
+  </validation:CompareValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
 </Entity>
