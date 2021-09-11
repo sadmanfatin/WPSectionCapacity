@@ -85,11 +85,7 @@ public class ManagedBean {
         }
         catch(Exception e){
             return;
-        }
-        
-     
-       
-      
+        }     
        int rangePosOfCurrentRow = viewObject.getRangeIndexOf(currentRow);
        int rangeStartBeforeQuery = viewObject.getRangeStart();
        viewObject.executeQuery();

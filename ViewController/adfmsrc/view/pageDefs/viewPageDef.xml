@@ -20,6 +20,15 @@
                   id="WpSectionCapacityVO1Query"/>
     <iterator Binds="OrgVO1" RangeSize="10" DataControl="AppModuleDataControl"
               id="OrgVO1Iterator"/>
+    <iterator Binds="MonthlyCapacityVO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="MonthlyCapacityVO1Iterator"/>
+    <searchRegion Binds="MonthlyCapacityVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="MonthlyCapacityVO1Query"/>
+    <iterator Binds="MonthYearSearchVO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="MonthYearSearchVO1Iterator"/>
   </executables>
   <bindings>
     <methodAction id="setSessionValues"
@@ -87,5 +96,54 @@
     </attributeValues>
     <action id="Commit" DataControl="AppModuleDataControl"
             RequiresUpdateModel="true" Action="commitTransaction"/>
+    <tree IterBinding="MonthlyCapacityVO1Iterator" id="MonthlyCapacityVO1">
+      <nodeDefinition DefName="model.view.MonthlyCapacityVO"
+                      Name="MonthlyCapacityVO10">
+        <AttrNames>
+          <Item Value="WpSectionId"/>
+          <Item Value="UnitSectionId"/>
+          <Item Value="SectionName"/>
+          <Item Value="OrgId"/>
+          <Item Value="OrgName"/>
+          <Item Value="MonthName"/>
+          <Item Value="Year"/>
+          <Item Value="D1"/>
+          <Item Value="D2"/>
+          <Item Value="D3"/>
+          <Item Value="D4"/>
+          <Item Value="D5"/>
+          <Item Value="D6"/>
+          <Item Value="D7"/>
+          <Item Value="D8"/>
+          <Item Value="D9"/>
+          <Item Value="D10"/>
+          <Item Value="D11"/>
+          <Item Value="D12"/>
+          <Item Value="D13"/>
+          <Item Value="D14"/>
+          <Item Value="D15"/>
+          <Item Value="D16"/>
+          <Item Value="D17"/>
+          <Item Value="D18"/>
+          <Item Value="D19"/>
+          <Item Value="D20"/>
+          <Item Value="D21"/>
+          <Item Value="D22"/>
+          <Item Value="D23"/>
+          <Item Value="D24"/>
+          <Item Value="D25"/>
+          <Item Value="D26"/>
+          <Item Value="D27"/>
+          <Item Value="D28"/>
+          <Item Value="D29"/>
+          <Item Value="D30"/>
+          <Item Value="D31"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="MonthYearSearchVO1Iterator" StaticList="false"
+          Uses="LOV_MonthName" id="MonthName" DTSupportsMRU="true"/>
+    <list IterBinding="MonthYearSearchVO1Iterator" StaticList="false"
+          Uses="LOV_Year" id="Year" DTSupportsMRU="true"/>
   </bindings>
 </pageDefinition>

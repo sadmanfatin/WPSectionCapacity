@@ -25,6 +25,12 @@
   <ViewUsage
     Name="WpSectionCapacityVO1"
     ViewObjectName="model.view.WpSectionCapacityVO"/>
+  <ViewUsage
+    Name="MonthYearSearchVO1"
+    ViewObjectName="model.view.MonthYearSearchVO"/>
+  <ViewUsage
+    Name="MonthlyCapacityVO1"
+    ViewObjectName="model.view.MonthlyCapacityVO"/>
   <ViewLinkUsage
     Name="OrgVO_Vs_CurrentSectionCapacityVO_VL1"
     ViewLinkObjectName="model.view.OrgVO_Vs_CurrentSectionCapacityVO_VL"
@@ -36,6 +42,12 @@
     ViewLinkObjectName="model.view.CurrentSectionCapapcity_vs_WpSectionCapacity_VL"
     SrcViewUsageName="model.service.AppModule.CurrentSectionCapacityVO1"
     DstViewUsageName="model.service.AppModule.WpSectionCapacityVO1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="MonthYearSearchVO_vs_MonthlyCapacityVO_VL1"
+    ViewLinkObjectName="model.view.MonthYearSearchVO_vs_MonthlyCapacityVO_VL"
+    SrcViewUsageName="model.service.AppModule.MonthYearSearchVO1"
+    DstViewUsageName="model.service.AppModule.MonthlyCapacityVO1"
     Reversed="false"/>
   <ClientInterface>
     <Method

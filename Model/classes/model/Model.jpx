@@ -21,6 +21,10 @@
     </DesignTime>
   </Containee>
   <Containee
+    Name="lov"
+    PackageName="model.lov"
+    ObjectType="JboPackage"/>
+  <Containee
     Name="service"
     PackageName="model.service"
     ObjectType="JboPackage">

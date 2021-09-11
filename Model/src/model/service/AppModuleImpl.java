@@ -4,6 +4,9 @@ import javax.servlet.http.HttpSession;
 
 import model.service.common.AppModule;
 
+import model.view.CurrentSectionCapacityVOImpl;
+import model.view.WpSectionCapacityVOImpl;
+
 import oracle.jbo.server.ApplicationModuleImpl;
 
 import javax.faces.application.FacesMessage;
@@ -96,5 +99,24 @@ public class AppModuleImpl extends ApplicationModuleImpl implements AppModule {
      */
     public ViewLinkImpl getCurrentSectionCapapcity_vs_WpSectionCapacity_VL1() {
         return (ViewLinkImpl)findViewLink("CurrentSectionCapapcity_vs_WpSectionCapacity_VL1");
+    }
+
+
+
+
+    /**
+     * Container's getter for MonthlyCapacityVO1.
+     * @return MonthlyCapacityVO1
+     */
+    public ViewObjectImpl getMonthlyCapacityVO1() {
+        return (ViewObjectImpl)findViewObject("MonthlyCapacityVO1");
+    }
+
+    /**
+     * Container's getter for MonthYearSearchVO_vs_MonthlyCapacityVO_VL1.
+     * @return MonthYearSearchVO_vs_MonthlyCapacityVO_VL1
+     */
+    public ViewLinkImpl getMonthYearSearchVO_vs_MonthlyCapacityVO_VL1() {
+        return (ViewLinkImpl)findViewLink("MonthYearSearchVO_vs_MonthlyCapacityVO_VL1");
     }
 }
