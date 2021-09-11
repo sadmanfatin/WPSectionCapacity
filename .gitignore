@@ -1,0 +1,6 @@
+
+*.ear
+*.jdb
+*.cdi_javac
+*.class
+*.war
