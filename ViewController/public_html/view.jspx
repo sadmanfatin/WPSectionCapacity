@@ -424,7 +424,7 @@
                         rows="#{bindings.MonthlyCapacityVO1.rangeSize}"
                         emptyText="#{bindings.MonthlyCapacityVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
                         fetchSize="#{bindings.MonthlyCapacityVO1.rangeSize}"
-                        rowBandingInterval="0"
+                        rowBandingInterval="1"
                         filterModel="#{bindings.MonthlyCapacityVO1Query.queryDescriptor}"
                         queryListener="#{bindings.MonthlyCapacityVO1Query.processQuery}"
                         filterVisible="true" varStatus="vs"
@@ -455,7 +455,7 @@
                 <af:column sortProperty="SectionName" filterable="true"
                            sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.SectionName.label}"
-                           id="c49" align="center" frozen="true">
+                           id="c49" align="center" frozen="true" width="140">
                   <af:outputText value="#{row.SectionName}" id="ot34"/>
                 </af:column>
                 <af:column sortProperty="OrgId" filterable="true"
@@ -489,157 +489,157 @@
                 </af:column>
                 <af:column sortProperty="D1" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D1.label}"
-                           id="c36" noWrap="false" align="center" width="80">
+                           id="c36" noWrap="false" align="center" width="50">
                   <af:outputText value="#{row.D1}" id="ot28" noWrap="false"/>
                 </af:column>
                 <af:column sortProperty="D2" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D2.label}"
-                           id="c50" align="center" noWrap="false" width="80">
+                           id="c50" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D2}" id="ot14"/>
                 </af:column>
                 <af:column sortProperty="D3" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D3.label}"
-                           id="c30" align="center" noWrap="false" width="80">
+                           id="c30" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D3}" id="ot18"/>
                 </af:column>
                 <af:column sortProperty="D4" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D4.label}"
-                           id="c32" align="center" noWrap="false" width="80">
+                           id="c32" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D4}" id="ot40"/>
                 </af:column>
                 <af:column sortProperty="D5" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D5.label}"
-                           id="c58" align="center" noWrap="false" width="80">
+                           id="c58" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D5}" id="ot33"/>
                 </af:column>
                 <af:column sortProperty="D6" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D6.label}"
-                           id="c40" align="center" noWrap="false" width="80">
+                           id="c40" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D6}" id="ot36"/>
                 </af:column>
                 <af:column sortProperty="D7" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D7.label}"
-                           id="c57" align="center" noWrap="false" width="80">
+                           id="c57" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D7}" id="ot10"/>
                 </af:column>
                 <af:column sortProperty="D8" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D8.label}"
-                           id="c37" align="center" noWrap="false" width="80">
+                           id="c37" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D8}" id="ot45"/>
                 </af:column>
                 <af:column sortProperty="D9" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D9.label}"
-                           id="c42" align="center" noWrap="false" width="80">
+                           id="c42" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D9}" id="ot16"/>
                 </af:column>
                 <af:column sortProperty="D10" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D10.label}"
-                           id="c62" align="center" noWrap="false" width="80">
+                           id="c62" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D10}" id="ot19"/>
                 </af:column>
                 <af:column sortProperty="D11" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D11.label}"
-                           id="c38" align="center" noWrap="false" width="80">
+                           id="c38" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D11}" id="ot20"/>
                 </af:column>
                 <af:column sortProperty="D12" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D12.label}"
-                           id="c41" align="center" noWrap="false" width="80">
+                           id="c41" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D12}" id="ot35"/>
                 </af:column>
                 <af:column sortProperty="D13" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D13.label}"
-                           id="c56" align="center" noWrap="false" width="80">
+                           id="c56" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D13}" id="ot26"/>
                 </af:column>
                 <af:column sortProperty="D14" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D14.label}"
-                           id="c60" align="center" noWrap="false" width="80">
+                           id="c60" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D14}" id="ot27"/>
                 </af:column>
                 <af:column sortProperty="D15" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D15.label}"
-                           id="c31" align="center" noWrap="false" width="80">
+                           id="c31" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D15}" id="ot31"/>
                 </af:column>
                 <af:column sortProperty="D16" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D16.label}"
-                           id="c61" align="center" noWrap="false" width="80">
+                           id="c61" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D16}" id="ot23"/>
                 </af:column>
                 <af:column sortProperty="D17" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D17.label}"
-                           id="c27" align="center" noWrap="false" width="80">
+                           id="c27" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D17}" id="ot30"/>
                 </af:column>
                 <af:column sortProperty="D18" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D18.label}"
-                           id="c29" align="center" noWrap="false" width="80">
+                           id="c29" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D18}" id="ot13"/>
                 </af:column>
                 <af:column sortProperty="D19" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D19.label}"
-                           id="c33" align="center" noWrap="false" width="80">
+                           id="c33" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D19}" id="ot12"/>
                 </af:column>
                 <af:column sortProperty="D20" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D20.label}"
-                           id="c26" align="center" noWrap="false" width="80">
+                           id="c26" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D20}" id="ot39"/>
                 </af:column>
                 <af:column sortProperty="D21" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D21.label}"
-                           id="c35" align="center" noWrap="false" width="80">
+                           id="c35" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D21}" id="ot15"/>
                 </af:column>
                 <af:column sortProperty="D22" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D22.label}"
-                           id="c28" align="center" noWrap="false" width="80">
+                           id="c28" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D22}" id="ot43"/>
                 </af:column>
                 <af:column sortProperty="D23" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D23.label}"
-                           id="c46" align="center" noWrap="false" width="80">
+                           id="c46" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D23}" id="ot44"/>
                 </af:column>
                 <af:column sortProperty="D24" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D24.label}"
-                           id="c51" align="center" noWrap="false" width="80">
+                           id="c51" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D24}" id="ot37"/>
                 </af:column>
                 <af:column sortProperty="D25" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D25.label}"
-                           id="c52" align="center" noWrap="false" width="80">
+                           id="c52" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D25}" id="ot29"/>
                 </af:column>
                 <af:column sortProperty="D26" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D26.label}"
-                           id="c59" align="center" noWrap="false" width="80">
+                           id="c59" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D26}" id="ot46"/>
                 </af:column>
                 <af:column sortProperty="D27" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D27.label}"
-                           id="c55" align="center" noWrap="false" width="80">
+                           id="c55" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D27}" id="ot22"/>
                 </af:column>
                 <af:column sortProperty="D28" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D28.label}"
-                           id="c54" align="center" noWrap="false" width="80">
+                           id="c54" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D28}" id="ot47"/>
                 </af:column>
                 <af:column sortProperty="D29" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D29.label}"
-                           id="c45" align="center" noWrap="false" width="80">
+                           id="c45" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D29}" id="ot32"/>
                 </af:column>
                 <af:column sortProperty="D30" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D30.label}"
-                           id="c43" align="center" noWrap="false" width="80">
+                           id="c43" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D30}" id="ot42"/>
                 </af:column>
                 <af:column sortProperty="D31" filterable="true" sortable="true"
                            headerText="#{bindings.MonthlyCapacityVO1.hints.D31.label}"
-                           id="c39" align="center" noWrap="false" width="80">
+                           id="c39" align="center" noWrap="false" width="50">
                   <af:outputText value="#{row.D31}" id="ot25"/>
                 </af:column>
               </af:table>

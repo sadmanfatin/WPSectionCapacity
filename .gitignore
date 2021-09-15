@@ -4,3 +4,10 @@
 *.cdi_javac
 *.class
 *.war
+Model/classes/.data/00000000/00000004.jdb
+*.jdb
+*.ear
+*.jdb
+*.cdi_javac
+*.war
+*.jws
