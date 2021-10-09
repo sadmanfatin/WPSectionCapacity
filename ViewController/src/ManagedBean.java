@@ -44,6 +44,7 @@ public class ManagedBean {
         // Add event code here...
         this.executeOperation("Commit");
         
+        appM.getMonthlyCapacityVO1().executeQuery();
         this.refreshQueryKeepingCurrentRow(appM.getCurrentSectionCapacityVO1());
         
         AdfFacesContext.getCurrentInstance().addPartialTarget(this.currentSectionCapacityTable);

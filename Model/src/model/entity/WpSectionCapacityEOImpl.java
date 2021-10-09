@@ -372,7 +372,7 @@ public class WpSectionCapacityEOImpl extends EntityImpl {
      * @return the Capacity
      */
     public Number getCapacity() {
-        System.out.println("eo impl get capacity");
+    //    System.out.println("eo impl get capacity");
         return (Number)getAttributeInternal(CAPACITY);
              
     }
@@ -384,7 +384,7 @@ public class WpSectionCapacityEOImpl extends EntityImpl {
     public void setCapacity(Number value) {
         setAttributeInternal(CAPACITY, value);
         
-        System.out.println("eo impl set capacity");
+     //   System.out.println("eo impl set capacity");
     }
 
     /**

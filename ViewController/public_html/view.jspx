@@ -122,13 +122,16 @@
                                         text="Add"
                                         disabled="#{!bindings.CreateInsert.enabled}"
                                         id="cb1" partialSubmit="true"/>
+                      <af:spacer width="20" height="10" id="s1"/>
                       <af:commandButton actionListener="#{bindings.Delete.execute}"
                                         text="Delete"
                                         disabled="#{!bindings.Delete.enabled}"
                                         id="cb2" partialSubmit="true"/>
+                      <af:spacer width="20" height="10" id="spacer1"/>
                       <af:commandButton actionListener="#{ManagedBean.save}"
                                         text="Save" id="cb3"
                                         partialSubmit="true"/>
+                      <af:spacer width="100" height="10" id="spacer2"/>
                     </af:toolbar>
                   </f:facet>
                   <f:facet name="statusbar"/>
