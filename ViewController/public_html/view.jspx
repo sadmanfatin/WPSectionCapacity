@@ -114,7 +114,7 @@
                 <f:facet name="menuBar"/>
                 <f:facet name="toolbar"/>
                 <af:panelCollection id="pc1" styleClass="AFStretchWidth"
-                                    inlineStyle="width:1166px;">
+                                    inlineStyle="width:1093px;">
                   <f:facet name="menus"/>
                   <f:facet name="toolbar">
                     <af:toolbar id="t3">
@@ -140,7 +140,7 @@
                             rows="#{bindings.WpSectionCapacityVO1.rangeSize}"
                             emptyText="#{bindings.WpSectionCapacityVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
                             fetchSize="#{bindings.WpSectionCapacityVO1.rangeSize}"
-                            rowBandingInterval="0"
+                            rowBandingInterval="1"
                             filterModel="#{bindings.WpSectionCapacityVO1Query.queryDescriptor}"
                             queryListener="#{bindings.WpSectionCapacityVO1Query.processQuery}"
                             filterVisible="true" varStatus="vs"

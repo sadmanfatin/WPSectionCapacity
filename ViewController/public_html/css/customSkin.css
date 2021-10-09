@@ -45,13 +45,6 @@ af|column::column-header-cell-content {
 }
 
 
-
-af|column::banded-data-cell {
-    background-color: #DDD;
-}
-
-
-
 af|table::data-row {
     height: 26px;
 }
