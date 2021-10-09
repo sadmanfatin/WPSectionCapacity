@@ -11,3 +11,9 @@ Model/classes/.data/00000000/00000004.jdb
 *.cdi_javac
 *.war
 *.jws
+*.war
+*.class
+*.cdi_javac
+*.jdb
+*.cdi_javac
+*.ear
