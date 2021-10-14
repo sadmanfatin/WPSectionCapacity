@@ -33,7 +33,7 @@
                           selectedRowKeys="#{bindings.CurrentSectionCapacityVO1.collectionModel.selectedRow}"
                           selectionListener="#{bindings.CurrentSectionCapacityVO1.collectionModel.makeCurrent}"
                           rowSelection="single" id="t1"
-                          inlineStyle="width:1000px; height:240.0px;"
+                          inlineStyle="width:1000px; height:300.0px;"
                           binding="#{ManagedBean.currentSectionCapacityTable}">
                   <af:column sortProperty="OrgId" filterable="true"
                              sortable="false"
@@ -62,7 +62,8 @@
                              sortable="false" headerText="Start Date" id="c5"
                              align="center">
                     <af:outputText value="#{row.StartDate}" id="ot6">
-                      <af:convertDateTime pattern="#{bindings.CurrentSectionCapacityVO1.hints.StartDate.format}"/>
+                      <af:convertDateTime pattern="#{bindings.CurrentSectionCapacityVO1.hints.StartDate.format}"
+                                          dateStyle="medium"/>
                     </af:outputText>
                   </af:column>
                   <af:column sortProperty="EndDate" filterable="true"
@@ -113,8 +114,7 @@
                 <f:facet name="context"/>
                 <f:facet name="menuBar"/>
                 <f:facet name="toolbar"/>
-                <af:panelCollection id="pc1" styleClass="AFStretchWidth"
-                                    inlineStyle="width:1093px;">
+                <af:panelCollection id="pc1" styleClass="AFStretchWidth">
                   <f:facet name="menus"/>
                   <f:facet name="toolbar">
                     <af:toolbar id="t3">
@@ -147,8 +147,7 @@
                             selectedRowKeys="#{bindings.WpSectionCapacityVO1.collectionModel.selectedRow}"
                             selectionListener="#{bindings.WpSectionCapacityVO1.collectionModel.makeCurrent}"
                             rowSelection="single" id="t2"
-                            partialTriggers=":::t1 ::cb1 ::cb2 ::cb3 id8"
-                            width="1066">
+                            partialTriggers=":::t1 ::cb1 ::cb2 ::cb3 id8" inlineStyle="width:1000px;">
                     <af:column sortProperty="SectionCapacityId"
                                filterable="true" sortable="false"
                                headerText="#{bindings.WpSectionCapacityVO1.hints.SectionCapacityId.label}"
@@ -182,8 +181,8 @@
                       </af:inputText>
                     </af:column>
                     <af:column sortProperty="StartDate" filterable="true"
-                               sortable="true" headerText="Start Date" id="c15"
-                               align="center">
+                               sortable="false" headerText="Start Date" id="c15"
+                               align="center" width="140">
                       <f:facet name="filter">
                         <af:inputDate value="#{vs.filterCriteria.StartDate}"
                                       id="id10"/>
@@ -194,12 +193,13 @@
                                     shortDesc="#{bindings.WpSectionCapacityVO1.hints.StartDate.tooltip}"
                                     id="id8" autoSubmit="true">
                         <f:validator binding="#{row.bindings.StartDate.validator}"/>
-                        <af:convertDateTime pattern="#{bindings.WpSectionCapacityVO1.hints.StartDate.format}"/>
+                        <af:convertDateTime pattern="#{bindings.WpSectionCapacityVO1.hints.StartDate.format}"
+                                            dateStyle="medium"/>
                       </af:inputDate>
                     </af:column>
                     <af:column sortProperty="EndDate" filterable="true"
-                               sortable="true" headerText="End Date" id="c21"
-                               align="center" partialTriggers="id8">
+                               sortable="false" headerText="End Date" id="c21"
+                               align="center" partialTriggers="id8" width="140">
                       <f:facet name="filter">
                         <af:inputDate value="#{vs.filterCriteria.EndDate}"
                                       id="id3"/>
@@ -210,11 +210,12 @@
                                     shortDesc="#{bindings.WpSectionCapacityVO1.hints.EndDate.tooltip}"
                                     id="id9" partialTriggers="id8">
                         <f:validator binding="#{row.bindings.EndDate.validator}"/>
-                        <af:convertDateTime pattern="#{bindings.WpSectionCapacityVO1.hints.EndDate.format}"/>
+                        <af:convertDateTime pattern="#{bindings.WpSectionCapacityVO1.hints.EndDate.format}"
+                                            dateStyle="medium"/>
                       </af:inputDate>
                     </af:column>
                     <af:column sortProperty="Hour" filterable="true"
-                               sortable="true"
+                               sortable="false"
                                headerText="#{bindings.WpSectionCapacityVO1.hints.Hour.label}"
                                id="c13" align="center">
                       <af:inputText value="#{row.bindings.Hour.inputValue}"
@@ -230,7 +231,7 @@
                       </af:inputText>
                     </af:column>
                     <af:column sortProperty="MachineOperatorCount"
-                               filterable="true" sortable="true"
+                               filterable="true" sortable="false"
                                headerText="Machine Operator Count" id="c14"
                                align="center">
                       <af:inputText value="#{row.bindings.MachineOperatorCount.inputValue}"
@@ -246,7 +247,7 @@
                       </af:inputText>
                     </af:column>
                     <af:column sortProperty="Efficiency" filterable="true"
-                               sortable="true"
+                               sortable="false"
                                headerText="#{bindings.WpSectionCapacityVO1.hints.Efficiency.label}"
                                id="c23" align="center">
                       <af:inputText value="#{row.bindings.Efficiency.inputValue}"
@@ -262,7 +263,7 @@
                       </af:inputText>
                     </af:column>
                     <af:column sortProperty="Capacity" filterable="true"
-                               sortable="true"
+                               sortable="false"
                                headerText="#{bindings.WpSectionCapacityVO1.hints.Capacity.label}"
                                id="c12" align="center">
                       <af:inputText value="#{row.bindings.Capacity.inputValue}"
