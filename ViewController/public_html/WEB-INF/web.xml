@@ -25,6 +25,30 @@
     <param-name>org.apache.myfaces.trinidad.security.FRAME_BUSTING</param-name>
     <param-value>never</param-value>
   </context-param>
+  <context-param>
+    <param-name>javax.faces.VALIDATE_EMPTY_FIELDS</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  <context-param>
+    <param-name>oracle.adf.view.rich.geometry.DEFAULT_DIMENSIONS</param-name>
+    <param-value>auto</param-value>
+  </context-param>
+  <context-param>
+    <param-name>oracle.adf.view.rich.SYNCROWS</param-name>
+    <param-value>enable</param-value>
+  </context-param>
+  <context-param>
+    <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  <context-param>
+    <param-name>javax.faces.FACELETS_DECORATORS</param-name>
+    <param-value>oracle.adfinternal.view.faces.facelets.rich.AdfTagDecorator</param-value>
+  </context-param>
+  <context-param>
+    <param-name>javax.faces.FACELETS_RESOURCE_RESOLVER</param-name>
+    <param-value>oracle.adfinternal.view.faces.facelets.rich.AdfFaceletsResourceResolver</param-value>
+  </context-param>
   <filter>
     <filter-name>JpsFilter</filter-name>
     <filter-class>oracle.security.jps.ee.http.JpsFilter</filter-class>
@@ -129,5 +153,9 @@
   <mime-mapping>
     <extension>swf</extension>
     <mime-type>application/x-shockwave-flash</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>amf</extension>
+    <mime-type>application/x-amf</mime-type>
   </mime-mapping>
 </web-app>

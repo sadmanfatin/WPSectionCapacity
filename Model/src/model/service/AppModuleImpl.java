@@ -34,8 +34,8 @@ public class AppModuleImpl extends ApplicationModuleImpl implements AppModule {
     public void setSessionValues(String orgId, String userId, String respId,
                                  String respApplId) {
        
-//    orgId = "343";
-//    userId = "5219";
+    orgId = "343";
+    userId = "5219";
     
        
         FacesContext fctx = FacesContext.getCurrentInstance();
